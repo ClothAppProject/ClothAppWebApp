@@ -1,0 +1,18 @@
+{
+  "name": "ClothAppWebApp",
+  "homepage": "https://github.com/ClothAppProject/ClothAppWebApp",
+  "authors": [
+    "SimoneConia <simoneconia@gmail.com>"
+  ],
+  "description": "Web Application for ClothApp (http://www.clothapp.it)",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
