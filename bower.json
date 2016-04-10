@@ -1,21 +1,16 @@
 {
-  "name": "ClothAppWebApp",
-  "homepage": "https://github.com/ClothAppProject/ClothAppWebApp",
-  "authors": [
-    "SimoneConia <simoneconia@gmail.com>"
-  ],
-  "description": "Web Application for ClothApp (http://www.clothapp.it)",
-  "main": "",
-  "license": "MIT",
+  "name": "polymer-starter-kit",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
-  }
+    "iron-elements": "PolymerElements/iron-elements#^1.0.0",
+    "neon-elements": "PolymerElements/neon-elements#^1.0.0",
+    "page": "visionmedia/page.js#~1.6.4",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.1",
+    "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
+    "polymer": "Polymer/polymer#^1.2.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0"
+  },
+  "ignore": []
 }
