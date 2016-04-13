@@ -22,6 +22,8 @@
         margin-bottom: 16px;
         margin-right: 12px;
       	padding-bottom: 10px;
+        max-height: 500px;
+        flex: 0 0 auto;
       }
 
       paper-card p {
@@ -92,8 +94,9 @@
         },
 
         ready: function() {
-          var width = 150 + Math.round(Math.random() * 200);
-          var height = 200 + Math.round(Math.random() * 100);
+          var width = 150 + Math.round(Math.random() * 150);
+          var height = 150 + Math.round(Math.random() * 150);
+
           this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
         },
