@@ -34,6 +34,25 @@
       	margin: 8px;
       }
 
+      paper-card .favorite paper-icon-button {
+        margin-left: 10px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: grey;
+      }
+
+      paper-card .favorite p {
+        margin-left: 0px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 12px;
+        background: grey;
+        color: white;
+      }
+
     </style>
 
     <paper-card image="{{imageUrl}}" elevation="1">
@@ -43,7 +62,10 @@
           <h3>{{username}}</h3>
         </div>
 
-        <paper-icon-button icon="favorite" class="flex-2 self-center end-justified" style="margin:16px; color:grey"></paper-icon-button>
+        <div class="flex-3 self-center end-justified layout horizontal favorite">
+          <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
+          <p class="flex self-center end-justified">123</p>
+        </div>
       </div>
     </paper-card>
   </template>
