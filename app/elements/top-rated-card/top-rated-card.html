@@ -1,0 +1,103 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<dom-module id="top-rated-card">
+  <template>
+    <style include="shared-styles iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+
+      span,
+      input {
+        @apply(--paper-font-body2);
+      }
+
+      paper-card {
+        margin-bottom: 16px;
+        margin-right: 12px;
+      	padding-bottom: 10px;
+      }
+
+      paper-card p {
+      	@apply(--paper-font-body2);
+      	margin: 8px;
+      }
+
+      paper-card h3 {
+      	@apply(--paper-font-body3);
+      	margin: 8px;
+      }
+
+      paper-card .favorite paper-icon-button {
+        margin-left: 10px;
+        margin-right: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: grey;
+      }
+
+      paper-card .favorite p {
+        margin-left: 0px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 12px;
+        background: grey;
+        color: white;
+      }
+
+    </style>
+
+    <paper-card image="{{imageUrl}}" elevation="1">
+      <div class="layout horizontal">
+        <div class="flex layout vertical">
+          <p>Uploaded by</p>
+          <h3>{{username}}</h3>
+        </div>
+
+        <div class="flex-3 self-center end-justified layout horizontal favorite">
+          <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
+          <p class="flex self-center end-justified">123</p>
+        </div>
+      </div>
+    </paper-card>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'top-rated-card',
+
+        properties: {
+
+          imageUrl: {
+            type: String,
+            value: 'http://www.placehold.it/200x200'
+          },
+
+          username: {
+            type: String,
+            value: 'Username',
+            notify: true
+          }
+        },
+
+        ready: function() {
+          var width = 150 + Math.round(Math.random() * 200);
+          var height = 200 + Math.round(Math.random() * 100);
+          this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
+          // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+        },
+      });
+    })();
+  </script>
+</dom-module>
