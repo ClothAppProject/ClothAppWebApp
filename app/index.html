@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Polymer Starter Kit">
-  <title>Polymer Starter Kit</title>
+  <title>ClothApp</title>
 
   <!-- Place favicon.ico in the `app/` directory -->
 
@@ -56,7 +56,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="elements/elements.html">
 
   <!-- For shared styles, shared-styles.html import in elements.html -->
-  <style is="custom-style" include="shared-styles"></style>
+  <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
+    .link {
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+    }
+  </style>
 </head>
 
 <body unresolved>
@@ -77,21 +82,55 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Content -->
         <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
+
+          <iron-image style="width:100%; --iron-image-width:100%; height:250px; background-color: lightgray;"
+            sizing="cover" preload fade src="http://lorempixel.com/250/200"></iron-image>
+
           <a data-route="home" href="{{baseUrl}}">
             <iron-icon icon="home"></iron-icon>
             <span>Home</span>
           </a>
 
-          <a data-route="users" href="{{baseUrl}}users">
-            <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
+          <a data-route="most-recent-photos" href="{{baseUrl}}">
+            <iron-icon icon="dashboard"></iron-icon>
+            <span>Most Recent Photos</span>
           </a>
+
+          <a data-route="top-rated-photos" href="{{baseUrl}}top-rated-photos">
+            <iron-icon icon="favorite"></iron-icon>
+            <span>Top Rated Photos</span>
+          </a>
+
+          <a data-route="popular-shops" href="{{baseUrl}}popular-shops">
+  			    <iron-icon icon="store"></iron-icon>
+  			    <span>Popular Shops</span>
+		      </a>
+
+          <hr>
+
+          <a data-route="profile" href="{{baseUrl}}profile">
+            <iron-icon icon="social:person"></iron-icon>
+            <span>My Profile</span>
+          </a>
+
+          <a data-route="logout" href="{{baseUrl}}logout">
+            <iron-icon icon="exit-to-app"></iron-icon>
+            <span>Logout</span>
+          </a>
+
+          <hr>
 
           <a data-route="contact" href="{{baseUrl}}contact">
             <iron-icon icon="mail"></iron-icon>
-            <span>Contact</span>
+            <span>Contact Us</span>
+          </a>
+
+          <a data-route="feedback" href="{{baseUrl}}feedback">
+            <iron-icon icon="feedback"></iron-icon>
+            <span>Feedback</span>
           </a>
         </paper-menu>
+
       </paper-scroll-header-panel>
 
       <!-- Main Area -->
@@ -103,58 +142,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <span class="space"></span>
 
           <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
           <paper-icon-button icon="search"></paper-icon-button>
 
           <!-- Application name -->
           <div class="middle middle-container">
-            <div class="app-name">Polymer Starter Kit</div>
+            <div class="app-name">ClothApp</div>
           </div>
 
           <!-- Application sub title -->
           <div class="bottom bottom-container">
-            <div class="bottom-title">The future of the web today</div>
+            <div class="bottom-title">Developed by "Kernel Team"</div>
           </div>
+
         </paper-toolbar>
+
+        <paper-toolbar style="margin-top:-1px;">
+
+          <div class="bottom bottom-container" style="width:100%">
+            <paper-tabs attr-for-selected="data-route" selected="[[route]]">
+              <paper-tab data-route="home">
+                <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
+              </paper-tab>
+              <paper-tab data-route="top-rated-photos" link>
+                <a href="{{baseUrl}}top-rated-photos" class="link" style="text-decoration:none; color:white;">TOP RATED</a>
+              </paper-tab>
+              <paper-tab data-route="popular-shops">
+                <a href="{{baseUrl}}popular-shops" class="link" style="text-decoration:none; color:white;">POPULAR SHOPS </a>
+              </paper-tab>
+            </paper-tabs>
+          </div>
+
+        </paper-toolbar>
+
+        <br><br>
 
         <!-- Main Content -->
         <div class="content">
-          <iron-pages attr-for-selected="data-route" selected="{{route}}">
+          <iron-pages attr-for-selected="data-route" selected="[[route]]">
             <section data-route="home" tabindex="-1">
+
+              <most-recent-gallery></most-recent-gallery>
+
+              <!-- <paper-material elevation="1">
+                <p>This is a card.</p>
+              </paper-material> -->
+
+            </section>
+
+            <section data-route="top-rated-photos" tabindex="-1">
               <paper-material elevation="1">
-                <my-greeting></my-greeting>
-
-                <p class="subhead">You now have:</p>
-                <my-list></my-list>
-
-                <p>Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <p>This is another card.</p>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h2 id="license">License</h2>
-                <p>Everything in this repo is BSD style license unless otherwise specified.</p>
-                <p>Copyright (c) 2015 The Polymer Authors. All rights reserved.</p>
-                <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-                <ul>
-                <li>Redistributions of source code must retain the above copyright
-                notice, this list of conditions and the following disclaimer.</li>
-                <li>Redistributions in binary form must reproduce the above
-                copyright notice, this list of conditions and the following disclaimer
-                in the documentation and/or other materials provided with the
-                distribution.</li>
-                <li>Neither the name of Google Inc. nor the names of its
-                contributors may be used to endorse or promote products derived from
-                this software without specific prior written permission.</li>
-                </ul>
-                <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+                <p>Top Rated Photos section.</p>
               </paper-material>
             </section>
 
-            <section data-route="users" tabindex="-1">
+            <section data-route="popular-shops" tabindex="-1">
+              <paper-material elevation="1">
+                <p>Popular Shops section.</p>
+              </paper-material>
+            </section>
+
+            <!-- <section data-route="users" tabindex="-1">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Users</h1>
                 <p>This is the users section</p>
@@ -178,6 +225,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p>This is the contact section</p>
               </paper-material>
             </section>
+
+            <section data-route="books">
+      		    <paper-material elevation="1">
+        		    <p>Hello, World!</p>
+      		    </paper-material>
+    		    </section> -->
           </iron-pages>
         </div>
       </paper-scroll-header-panel>
