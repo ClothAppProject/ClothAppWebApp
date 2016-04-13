@@ -19,53 +19,76 @@
       }
 
       paper-card {
-        margin-bottom: 16px;
-        margin-right: 12px;
-      	padding-bottom: 10px;
+        width: 100%;
       }
 
       paper-card p {
       	@apply(--paper-font-body2);
-      	margin: 8px;
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-top: 8px;
+        margin-bottom: 0px;
       }
 
       paper-card h3 {
       	@apply(--paper-font-body3);
-      	margin: 8px;
+      	margin-left: 8px;
+        margin-right: 8px;
+        margin-top: 0px;
+        margin-bottom: 4px;
       }
 
-      paper-card .favorite paper-icon-button {
-        margin-left: 10px;
-        margin-right: 0px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        color: grey;
+      paper-card .content {
+        margin: 20px;
       }
 
-      paper-card .favorite p {
-        margin-left: 0px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        padding-left: 5px;
-        padding-right: 5px;
-        border-radius: 12px;
-        background: grey;
-        color: white;
+      .chip {
+        max-height: 64px;
+      }
+
+      .chip iron-icon {
+        margin-right: 8px;
+      }
+
+      .circle-image {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 48px;
+        height: 48px;
+        max-width: 48px;
+        max-height: 48px;
+        margin-right: 20px;
+        margin-top: 8px;
+        margin-left: 8px;
       }
 
     </style>
 
-    <paper-card image="{{imageUrl}}" elevation="1">
+    <paper-card elevation="1">
       <div class="layout horizontal">
-        <div class="flex layout vertical">
-          <p>Uploaded by</p>
-          <h3>{{username}}</h3>
+
+        <iron-image src="{{imageUrl}}" style="position:relative"></iron-image>
+
+        <div class="flex layout vertical content">
+
+          <div class="layout horizontal start-justified chip">
+
+            <div class="circle-image">
+              <iron-image src="http://www.placehold.it/48x48"></iron-image>
+            </div>
+
+            <iron-icon icon="social:person" class="self-center"></iron-icon>
+
+            <div class="flex layout vertical">
+              <p>Uploaded by</p>
+              <h3>{{username}}</h3>
+            </div>
+
+          </div>
+
+
         </div>
 
-        <div class="flex-3 self-center end-justified layout horizontal favorite">
-          <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
-          <p class="flex self-center end-justified">123</p>
-        </div>
       </div>
     </paper-card>
   </template>
