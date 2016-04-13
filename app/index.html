@@ -61,6 +61,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       @apply(--layout-horizontal);
       @apply(--layout-center-center);
     }
+
+    .self-end {
+      /* This mixin (from iron-flex-layout) aligns the tabs to the
+      bottom of the toolbar. */
+      @apply(--layout-self-end);
+    }
   </style>
 </head>
 
@@ -158,19 +164,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <paper-toolbar style="margin-top:-1px;">
 
-          <div class="bottom bottom-container" style="width:100%">
-            <paper-tabs attr-for-selected="data-route" selected="[[route]]">
-              <paper-tab data-route="home">
-                <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
-              </paper-tab>
-              <paper-tab data-route="top-rated-photos" link>
-                <a href="{{baseUrl}}top-rated-photos" class="link" style="text-decoration:none; color:white;">TOP RATED</a>
-              </paper-tab>
-              <paper-tab data-route="popular-shops">
-                <a href="{{baseUrl}}popular-shops" class="link" style="text-decoration:none; color:white;">POPULAR SHOPS </a>
-              </paper-tab>
-            </paper-tabs>
-          </div>
+          <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%;">
+            <paper-tab data-route="home">
+              <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
+            </paper-tab>
+            <paper-tab data-route="top-rated-photos" link>
+              <a href="{{baseUrl}}top-rated-photos" class="link" style="text-decoration:none; color:white;">TOP RATED</a>
+            </paper-tab>
+            <paper-tab data-route="popular-shops">
+              <a href="{{baseUrl}}popular-shops" class="link" style="text-decoration:none; color:white;">POPULAR SHOPS </a>
+            </paper-tab>
+          </paper-tabs>
 
         </paper-toolbar>
 
