@@ -19,11 +19,7 @@
       }
 
       paper-card {
-        margin-bottom: 16px;
-        margin-right: 12px;
-      	padding-bottom: 10px;
-        max-height: 500px;
-        flex: 0 0 auto;
+        margin: 8px;
       }
 
       paper-card p {
@@ -55,18 +51,28 @@
         color: white;
       }
 
+      iron-image {
+        width: 100%;
+        --iron-image-width: 100%;
+      }
+
     </style>
 
-    <paper-card image="{{imageUrl}}" elevation="1">
-      <div class="layout horizontal">
-        <div class="flex layout vertical">
-          <p>Uploaded by</p>
-          <h3>{{username}}</h3>
-        </div>
+    <paper-card id="card" elevation="1">
+      <div class="layout vertical">
 
-        <div class="flex-3 self-center end-justified layout horizontal favorite">
-          <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
-          <p class="flex self-center end-justified">123</p>
+        <iron-image id="mainImage" src="{{imageUrl}}"></iron-image>
+
+        <div class="layout horizontal">
+          <div class="flex layout vertical">
+            <p>Uploaded by</p>
+            <h3>{{username}}</h3>
+          </div>
+
+          <div class="flex-3 self-center end-justified layout horizontal favorite">
+            <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
+            <p class="flex self-center end-justified">123</p>
+          </div>
         </div>
       </div>
     </paper-card>

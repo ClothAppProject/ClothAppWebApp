@@ -14,7 +14,7 @@
       }
     </style>
 
-    <div class="layout horizontal center around-justified wrap" id="gallery">
+    <div class="layout horizontal center-justified center wrap" id="gallery">
 
     </div>
   </template>
@@ -29,9 +29,8 @@
         ready: function() {
           var gallery = this.$.gallery;
 
-          for( var i = 0; i < 20; i++) {
+          for ( var i = 0; i < 10; i++ ) {
             var card = document.createElement("most-recent-card");
-            // console.log(card.imageUrl);
             gallery.appendChild(card);
           }
         }
