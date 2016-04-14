@@ -63,6 +63,36 @@
        color: white !important;
        background-color: var(--paper-red-800);
     }
+
+    .search-box {
+      background-color: #fff;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      height: 40px;
+    }
+
+    .search-box iron-icon {
+      color: var(--google-grey-700);
+      fill: var(--google-grey-700);
+      margin: 0 8px;
+    }
+
+    .search-box input {
+      font-size: 20px;
+      outline: 0;
+      border: none;
+      margin-left: 10px;
+    }
+
+    .search-box {
+      @apply(--layout-flex);
+      @apply(--layout-center);
+      @apply(--layout-horizontal);
+    }
+
+    .search-box input {
+      @apply(--layout-flex);
+    }
   </style>
 </head>
 
@@ -136,29 +166,30 @@
       </paper-scroll-header-panel>
 
       <!-- Main Area -->
-      <paper-scroll-header-panel main id="headerPanelMain" condenses scrollAwayTopbar>
+      <paper-scroll-header-panel main id="headerPanelMain" condenses condensed-header-height="54" scroll-away-topbar>
         <!-- Main Toolbar -->
         <paper-toolbar id="mainToolbar" class="medium-tall">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
 
-          <span class="space"></span>
+          <!-- <span class="space"></span> -->
 
           <!-- Toolbar icons -->
-          <paper-icon-button icon="search"></paper-icon-button>
+          <!-- <paper-icon-button icon="search"></paper-icon-button> -->
+
+          <div class="search-box top top-container">
+            <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle style="color:grey"></paper-icon-button>
+            <input>
+            <iron-icon icon="search"></iron-icon>
+          </div>
 
           <!-- Application name -->
-          <div class="middle middle-container">
+          <!-- <div class="middle middle-container">
             <div class="app-name">ClothApp</div>
-          </div>
+          </div> -->
 
           <!-- Application sub title -->
           <!-- <div class="bottom bottom-container">
             <div class="bottom-title">Developed by "Kernel Team"</div>
           </div> -->
-
-        </paper-toolbar>
-
-        <paper-toolbar style="margin-top:-1px; margin-left:0px; margin-right:0px">
 
           <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%; margin-left:0px; margin-right:0px" scrollable>
             <paper-tab data-route="home">
@@ -173,6 +204,22 @@
           </paper-tabs>
 
         </paper-toolbar>
+
+        <!-- <paper-toolbar style="margin-top:-1px; margin-left:0px; margin-right:0px">
+
+          <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%; margin-left:0px; margin-right:0px" scrollable>
+            <paper-tab data-route="home">
+              <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
+            </paper-tab>
+            <paper-tab data-route="top-rated-photos" link>
+              <a href="{{baseUrl}}top-rated-photos" class="link" style="text-decoration:none; color:white;">TOP RATED</a>
+            </paper-tab>
+            <paper-tab data-route="popular-shops">
+              <a href="{{baseUrl}}popular-shops" class="link" style="text-decoration:none; color:white;">POPULAR SHOPS </a>
+            </paper-tab>
+          </paper-tabs>
+
+        </paper-toolbar> -->
 
         <br><br>
 
