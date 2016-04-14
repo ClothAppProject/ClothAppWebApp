@@ -1,22 +1,28 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/iron-scroll-threshold/iron-scroll-threshold.html">
 
 <link rel="import" href="../most-recent-card/most-recent-card.html">
 
 <dom-module id="most-recent-gallery">
-  <template>
+  <template id="ciao">
     <style include="shared-styles iron-flex iron-flex-alignment">
+
       :host {
         display: block;
       }
+
     </style>
 
-    <div class="layout horizontal center-justified center wrap" id="gallery">
+    <div class="layout horizontal center center-justified wrap" id="gallery">
 
     </div>
+
   </template>
 
   <script>
@@ -27,9 +33,16 @@
         is: 'most-recent-gallery',
 
         ready: function() {
+
+          this.loadMoreImages();
+
+        },
+
+        loadMoreImages: function() {
+
           var gallery = this.$.gallery;
 
-          for ( var i = 0; i < 10; i++ ) {
+          for ( var i = 0; i < 30; i++ ) {
             var card = document.createElement("most-recent-card");
             gallery.appendChild(card);
           }
