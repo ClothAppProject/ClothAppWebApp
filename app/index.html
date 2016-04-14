@@ -67,6 +67,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       bottom of the toolbar. */
       @apply(--layout-self-end);
     }
+
+    .paper-toolbar {
+      padding: 0px;
+    }
   </style>
 </head>
 
@@ -162,9 +166,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </paper-toolbar>
 
-        <paper-toolbar style="margin-top:-1px;">
+        <paper-toolbar style="margin-top:-1px; margin-left:0px; margin-right:0px">
 
-          <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%;">
+          <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%; margin-left:0px; margin-right:0px" scrollable>
             <paper-tab data-route="home">
               <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
             </paper-tab>
