@@ -19,7 +19,9 @@
       }
 
       paper-card {
-        width: 100%;
+        width: 94%;
+        margin-bottom: 12px;
+        margin-left: 3%;
       }
 
       paper-card p {
@@ -62,16 +64,23 @@
         margin-left: 8px;
       }
 
+      iron-image {
+        min-width: 200px;
+        width: 100%;
+        --iron-image-width: 100%;
+      }
+
     </style>
 
     <paper-card elevation="1" class="flex">
-      <div class="layout horizontal">
 
-        <iron-image src="{{imageUrl}}" style="position:relative"></iron-image>
+      <div class="layout horizontal wrap">
 
-        <div class="flex layout vertical content">
+        <iron-image src="{{imageUrl}}" class="flex"></iron-image>
 
-          <div class="layout horizontal start-justified chip">
+        <div class="flex-2 layout vertical content">
+
+          <div class="layout horizontal chip">
 
             <div class="circle-image">
               <iron-image src="http://www.placehold.it/48x48"></iron-image>
@@ -79,17 +88,16 @@
 
             <iron-icon icon="social:person" class="self-center"></iron-icon>
 
-            <div class="flex layout vertical">
+            <div class="layout vertical" style="min-width: 200px;">
               <p>Uploaded by</p>
               <h3>{{username}}</h3>
             </div>
 
           </div>
 
-
         </div>
 
-      </div>
+    </div>
     </paper-card>
   </template>
 
