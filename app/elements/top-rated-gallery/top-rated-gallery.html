@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/iron-scroll-threshold/iron-scroll-threshold.html">
+
+<link rel="import" href="../most-recent-card/top-rated-card.html">
+
+<dom-module id="top-rated-gallery">
+  <template>
+    <style include="shared-styles iron-flex iron-flex-alignment">
+
+      :host {
+        display: block;
+      }
+
+    </style>
+
+    <div class="layout horizontal center center-justified wrap" id="gallery">
+
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'top-rated-gallery',
+
+        ready: function() {
+
+          this.loadMoreImages();
+
+        },
+
+        loadMoreImages: function() {
+
+          var gallery = this.$.gallery;
+
+          for ( var i = 0; i < 10; i++ ) {
+            var card = document.createElement("top-rated-card");
+            gallery.appendChild(card);
+          }
+        }
+      });
+    })();
+  </script>
+</dom-module>
