@@ -247,12 +247,21 @@
             </section>
 
             <section data-route="top-rated-photos" tabindex="-1">
-              <paper-material elevation="1">
-                <p>Top Rated Photos section.</p>
-              </paper-material>
 
-              <!-- <top-rated-card></top-rated-card> -->
-              <top-rated-gallery></top-rated-gallery>
+              <top-rated-gallery id="topRatedGallery"></top-rated-gallery>
+
+              <div class="layout horizontal center-justified" style="margin:30px">
+
+                <paper-button
+                  raised
+                  class="redButton"
+                  onclick="document.querySelector('#topRatedGallery').loadMoreImages();">
+
+                  <iron-icon icon="refresh"></iron-icon>
+                  LOAD MORE PHOTOS
+                </paper-button>
+
+              </div>
             </section>
 
             <section data-route="popular-shops" tabindex="-1">
