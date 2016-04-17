@@ -167,13 +167,11 @@
 
       <!-- Main Area -->
       <paper-scroll-header-panel main id="headerPanelMain" condenses condensed-header-height="54" scroll-away-topbar>
+
         <!-- Main Toolbar -->
         <paper-toolbar id="mainToolbar" class="medium-tall">
 
           <!-- <span class="space"></span> -->
-
-          <!-- Toolbar icons -->
-          <!-- <paper-icon-button icon="search"></paper-icon-button> -->
 
           <div class="search-box top top-container">
             <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle style="color:grey"></paper-icon-button>
@@ -204,24 +202,6 @@
           </paper-tabs>
 
         </paper-toolbar>
-
-        <!-- <paper-toolbar style="margin-top:-1px; margin-left:0px; margin-right:0px">
-
-          <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%; margin-left:0px; margin-right:0px" scrollable>
-            <paper-tab data-route="home">
-              <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
-            </paper-tab>
-            <paper-tab data-route="top-rated-photos" link>
-              <a href="{{baseUrl}}top-rated-photos" class="link" style="text-decoration:none; color:white;">TOP RATED</a>
-            </paper-tab>
-            <paper-tab data-route="popular-shops">
-              <a href="{{baseUrl}}popular-shops" class="link" style="text-decoration:none; color:white;">POPULAR SHOPS </a>
-            </paper-tab>
-          </paper-tabs>
-
-        </paper-toolbar> -->
-
-        <br><br>
 
         <!-- Main Content -->
         <div class="content">
@@ -270,36 +250,6 @@
               </paper-material>
             </section>
 
-            <!-- <section data-route="users" tabindex="-1">
-              <paper-material elevation="1">
-                <h1 class="page-title" tabindex="-1">Users</h1>
-                <p>This is the users section</p>
-                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-                <a href$="{{baseUrl}}users/Sam">Sam</a>
-              </paper-material>
-            </section>
-
-            <section data-route="user-info" tabindex="-1">
-              <paper-material elevation="-1">
-                <h1 class="page-title" tabindex="-1">User: {{params.name}}</h1>
-                <div>This is {{params.name}}'s section</div>
-              </paper-material>
-            </section>
-
-            <section data-route="contact" tabindex="-1">
-              <paper-material elevation="1">
-                <h1 class="page-title" tabindex="-1">Contact</h1>
-                <p>This is the contact section</p>
-              </paper-material>
-            </section>
-
-            <section data-route="books">
-      		    <paper-material elevation="1">
-        		    <p>Hello, World!</p>
-      		    </paper-material>
-    		    </section> -->
           </iron-pages>
 
           <iron-scroll-threshold id="scrollThreshold"
