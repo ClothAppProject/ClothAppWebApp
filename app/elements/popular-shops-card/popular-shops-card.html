@@ -105,11 +105,11 @@
 
             <span class="flex"></span>
 
-            <paper-icon-button icon="hardware:keyboard-arrow-down" title="more info" onclick="_toggle()" class="self-center">
+            <paper-icon-button id="toggle" icon="hardware:keyboard-arrow-down" title="more info" class="self-center" on-click="toggle">
             </paper-icon-button>
           </div>
 
-          <iron-collapse id="more-info" style="width:100%;">
+          <iron-collapse id="collapse" style="width:100%;">
 
             <paper-listbox>
               <paper-item>Mon. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
@@ -123,14 +123,14 @@
 
           </iron-collapse>
 
-          <script>
+          <!-- <script>
             function _toggle() {
               var moreInfo = document.getElementById('more-info');
               var iconButton = Polymer.dom(event).localTarget;
               iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
               moreInfo.toggle();
             }
-          </script>
+          </script> -->
 
         </div>
 
@@ -163,7 +163,11 @@
             type: String,
             value: 'Username',
             notify: true
-          }
+          },
+
+          target: {
+            type: Object
+          },
         },
 
         ready: function() {
@@ -171,7 +175,28 @@
           var height = 200 + Math.round(Math.random() * 100);
           this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+
+          // this.$.toggle.onclick = this.toggle;
+          // // console.log(this.$.toggle.onclick);
+          // this.target = this.$.target;
+          // console.log(this.target);
         },
+
+        toggle: function() {
+
+          // alert("Ciao");
+
+          // var moreInfo = document.getElementById('toggleTarget');
+          // console.log(this.target);
+          // var iconButton = Polymer.dom(event).localTarget;
+          // var toggleTarget = iconButton.parentNode.parentNode.querySelector("iron-collapse");
+          // console.log(toggleTarget);
+          // iconButton.icon = target.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
+          // target.toggle();
+
+          this.$.toggle.icon = this.$.collapse.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
+          this.$.collapse.toggle();
+        }
       });
     })();
   </script>
