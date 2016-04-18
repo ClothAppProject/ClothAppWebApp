@@ -42,13 +42,14 @@
 
       paper-card .content {
         margin-top: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
         margin-bottom: 0px;
       }
 
       .chip {
         max-height: 64px;
+        margin-left: 16px;
       }
 
       .chip iron-icon {
@@ -62,9 +63,10 @@
         height: 48px;
         max-width: 48px;
         max-height: 48px;
-        margin-right: 20px;
+        margin-right: 16px;
         margin-top: 8px;
-        margin-left: 8px;
+        margin-left: 0px;
+        margin-bottom: 0px;
       }
 
       iron-image {
@@ -75,7 +77,8 @@
       }
 
       .item-name {
-        margin-right: 20px;
+        margin-left: 16px;
+        margin-right: 16px;
         margin-top: 24px;
         margin-bottom: 16px;
         @apply(--paper-font-headline);
@@ -93,8 +96,8 @@
         margin-left: 0px;
         margin-right: 8px;
         margin-top: 0px;
-        margin-bottom: 12px;
-        max-width: 320px;
+        margin-bottom: 8px;
+        max-width: 260px;
       }
 
       .favorite {
@@ -142,7 +145,7 @@
 
           <br>
 
-          <div class="layout horizontal wrap" style="max-width:350px;">
+          <div class="layout horizontal wrap" style="max-width:350px; margin-left:16px;">
 
             <div class="hashtag">
               #Hashtag1
@@ -164,7 +167,7 @@
 
           <br>
 
-          <div style="max-width:350px; margin-bottom:20px; min-height:100px; overflow:hidden;" class="flex">
+          <div style="max-width:280px; margin-bottom:20px; min-height:100px; overflow:hidden; text-overflow:ellipsis; margin-left:16px;" class="flex">
             <p>
               This is a brief description or short story about the image.
               This is a brief description or short story about the image.
@@ -186,7 +189,7 @@
 
         </div>
 
-    </div>
+      </div>
     </paper-card>
   </template>
 
