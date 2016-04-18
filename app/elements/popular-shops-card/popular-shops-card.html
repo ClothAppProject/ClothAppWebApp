@@ -2,9 +2,13 @@
 
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
 
 <dom-module id="popular-shops-card">
   <template>
@@ -13,22 +17,18 @@
         display: block;
       }
 
-      .cafe-header {
+      .shop-header {
         @apply(--paper-font-headline);
       }
 
-      .cafe-light {
+      .shop-light {
         color: var(--paper-grey-600);
       }
 
-      .cafe-location {
+      .shop-icon {
         float: right;
         font-size: 15px;
         vertical-align: middle;
-      }
-
-      .cafe-reserve {
-        color: var(--google-blue-500);
       }
 
       iron-icon.star {
@@ -41,16 +41,23 @@
         color: var(--paper-grey-500);
       }
 
+      paper-card {
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+
     </style>
 
     <paper-card image="{{imageUrl}}">
       <div class="card-content">
-        <div class="cafe-header">Cafe Basilico
-          <div class="cafe-location cafe-light">
-            <iron-icon icon="communication:location-on"></iron-icon>
-            <span>250ft</span>
+
+        <div class="shop-header">Shop name
+          <div class="shop-icon shop-light">
+            <iron-icon icon="store"></iron-icon>
           </div>
         </div>
+
         <div class="cafe-rating">
           <iron-icon class="star" icon="star"></iron-icon>
           <iron-icon class="star" icon="star"></iron-icon>
@@ -58,20 +65,62 @@
           <iron-icon class="star" icon="star"></iron-icon>
           <iron-icon class="star" icon="star"></iron-icon>
         </div>
-        <p>$・Italian, Cafe</p>
-        <p class="cafe-light">Small plates, salads &amp; sandwiches in an intimate setting with 12 indoor seats plus patio seating.</p>
+
+        <p>
+          <iron-icon icon="communication:location-on" style="color:grey;"></iron-icon>
+          Via abcdef, 100, Roma
+        </p>
+
+        <p class="shop-light">
+          This is a brief description of the store.
+          This is a brief description of the store.
+          This is a brief description of the store.
+          This is a brief description of the store.
+        </p>
+
       </div>
+
       <div class="card-actions">
-        <p>Tonight's availability</p>
-        <div class="horizontal justified">
-          <paper-icon-button icon="icons:event"></paper-icon-button>
-          <paper-button>5:30PM</paper-button>
-          <paper-button>7:30PM</paper-button>
-          <paper-button>9:00PM</paper-button>
+
+        <div class="layout horizontal">
+          <p style="display:inline-block;">
+            <paper-icon-button icon="icons:event"></paper-icon-button>
+            Opening hours
+          </p>
+
+          <span class="flex"></span>
+
+          <paper-icon-button icon="hardware:keyboard-arrow-down" title="more info" onclick="_toggle()" class="self-center">
+          </paper-icon-button>
         </div>
-        <paper-button class="cafe-reserve">Reserve</paper-button>
+
+        <iron-collapse id="more-info" style="width:100%;">
+
+          <paper-listbox>
+            <paper-item>Mon. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+            <paper-item>Tue. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+            <paper-item>Wed. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+            <paper-item>Thu. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+            <paper-item>Fri. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+            <paper-item>Sat. 9:00 ~ 14:00</paper-item>
+            <paper-item>Sun. CLOSED</paper-item>
+          </paper-listbox>
+
+        </iron-collapse>
+
+        <script>
+          function _toggle() {
+            var moreInfo = document.getElementById('more-info');
+            var iconButton = Polymer.dom(event).localTarget;
+            iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
+            moreInfo.toggle();
+          }
+        </script>
+
       </div>
+
     </paper-card>
+    
   </template>
 
   <script>
