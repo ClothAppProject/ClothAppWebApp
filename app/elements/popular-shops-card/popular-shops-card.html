@@ -49,15 +49,15 @@
 
       .shop-image {
         width: 450px;
+        --iron-image-width: 450px;
         min-width: 300px;
         min-height: 300px;
-        background: url('http://placehold.it/200x200');
-        background-size: cover;
       }
 
       .shop-content {
         @apply(--layout-flex);
         float: left;
+        min-width: 300px;
       }
 
     </style>
@@ -136,8 +136,10 @@
 
       </div>
 
-      <div class="shop-image">
-      </div>
+      <!-- <div class="shop-image" id="shopImage">
+      </div> -->
+
+      <iron-image src="{{imageUrl}}" class="shop-image flex" sizing="cover"></iron-image>
 
     </paper-card>
 
