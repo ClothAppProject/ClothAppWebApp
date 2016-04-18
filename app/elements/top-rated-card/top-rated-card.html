@@ -69,10 +69,10 @@
         margin-bottom: 0px;
       }
 
-      iron-image {
+      .main-image {
+        width: 450px;
+        --iron-image-width: 450px;
         min-width: 300px;
-        width: 100%;
-        --iron-image-width: 100%;
         min-height: 300px;
       }
 
@@ -118,13 +118,13 @@
 
     </style>
 
-    <paper-card elevation="1" class="flex">
+    <paper-card elevation="1">
 
       <div class="layout horizontal wrap">
 
-        <iron-image src="{{imageUrl}}" class="flex"></iron-image>
+        <iron-image src="{{imageUrl}}" class="main-image flex" sizing="cover"></iron-image>
 
-        <div class="flex-2 layout vertical content">
+        <div class="content">
 
           <div class="layout horizontal chip">
 
