@@ -47,80 +47,100 @@
         margin-bottom: 8px;
       }
 
+      .shop-image {
+        width: 450px;
+        min-width: 300px;
+        min-height: 300px;
+        background: url('http://placehold.it/200x200');
+        background-size: cover;
+      }
+
+      .shop-content {
+        @apply(--layout-flex);
+        float: left;
+      }
+
     </style>
 
-    <paper-card image="{{imageUrl}}">
-      <div class="card-content">
+    <paper-card class="layout horizontal wrap">
 
-        <div class="shop-header">Shop name
-          <div class="shop-icon shop-light">
-            <iron-icon icon="store"></iron-icon>
+      <div class="shop-content">
+        <div class="card-content">
+
+          <div class="shop-header">Shop name
+            <div class="shop-icon shop-light">
+              <iron-icon icon="store"></iron-icon>
+            </div>
           </div>
+
+          <div class="cafe-rating">
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+          </div>
+
+          <p>
+            <iron-icon icon="communication:location-on" style="color:grey;"></iron-icon>
+            Via abcdef, 100, Roma
+          </p>
+
+          <p class="shop-light">
+            This is a brief description of the store.
+            This is a brief description of the store.
+            This is a brief description of the store.
+            This is a brief description of the store.
+          </p>
+
         </div>
 
-        <div class="cafe-rating">
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
+        <div class="card-actions">
+
+          <div class="layout horizontal">
+            <p style="display:inline-block;">
+              <paper-icon-button icon="icons:event"></paper-icon-button>
+              Opening hours
+            </p>
+
+            <span class="flex"></span>
+
+            <paper-icon-button icon="hardware:keyboard-arrow-down" title="more info" onclick="_toggle()" class="self-center">
+            </paper-icon-button>
+          </div>
+
+          <iron-collapse id="more-info" style="width:100%;">
+
+            <paper-listbox>
+              <paper-item>Mon. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+              <paper-item>Tue. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+              <paper-item>Wed. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+              <paper-item>Thu. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+              <paper-item>Fri. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
+              <paper-item>Sat. 9:00 ~ 14:00</paper-item>
+              <paper-item>Sun. CLOSED</paper-item>
+            </paper-listbox>
+
+          </iron-collapse>
+
+          <script>
+            function _toggle() {
+              var moreInfo = document.getElementById('more-info');
+              var iconButton = Polymer.dom(event).localTarget;
+              iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
+              moreInfo.toggle();
+            }
+          </script>
+
         </div>
-
-        <p>
-          <iron-icon icon="communication:location-on" style="color:grey;"></iron-icon>
-          Via abcdef, 100, Roma
-        </p>
-
-        <p class="shop-light">
-          This is a brief description of the store.
-          This is a brief description of the store.
-          This is a brief description of the store.
-          This is a brief description of the store.
-        </p>
 
       </div>
 
-      <div class="card-actions">
-
-        <div class="layout horizontal">
-          <p style="display:inline-block;">
-            <paper-icon-button icon="icons:event"></paper-icon-button>
-            Opening hours
-          </p>
-
-          <span class="flex"></span>
-
-          <paper-icon-button icon="hardware:keyboard-arrow-down" title="more info" onclick="_toggle()" class="self-center">
-          </paper-icon-button>
-        </div>
-
-        <iron-collapse id="more-info" style="width:100%;">
-
-          <paper-listbox>
-            <paper-item>Mon. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
-            <paper-item>Tue. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
-            <paper-item>Wed. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
-            <paper-item>Thu. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
-            <paper-item>Fri. 9:00 ~ 14:00 / 16:00 ~ 19:00</paper-item>
-            <paper-item>Sat. 9:00 ~ 14:00</paper-item>
-            <paper-item>Sun. CLOSED</paper-item>
-          </paper-listbox>
-
-        </iron-collapse>
-
-        <script>
-          function _toggle() {
-            var moreInfo = document.getElementById('more-info');
-            var iconButton = Polymer.dom(event).localTarget;
-            iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
-            moreInfo.toggle();
-          }
-        </script>
-
+      <div class="shop-image">
       </div>
 
     </paper-card>
-    
+
   </template>
 
   <script>
