@@ -123,15 +123,6 @@
 
           </iron-collapse>
 
-          <!-- <script>
-            function _toggle() {
-              var moreInfo = document.getElementById('more-info');
-              var iconButton = Polymer.dom(event).localTarget;
-              iconButton.icon = moreInfo.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
-              moreInfo.toggle();
-            }
-          </script> -->
-
         </div>
 
       </div>
@@ -175,24 +166,9 @@
           var height = 200 + Math.round(Math.random() * 100);
           this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
-
-          // this.$.toggle.onclick = this.toggle;
-          // // console.log(this.$.toggle.onclick);
-          // this.target = this.$.target;
-          // console.log(this.target);
         },
 
         toggle: function() {
-
-          // alert("Ciao");
-
-          // var moreInfo = document.getElementById('toggleTarget');
-          // console.log(this.target);
-          // var iconButton = Polymer.dom(event).localTarget;
-          // var toggleTarget = iconButton.parentNode.parentNode.querySelector("iron-collapse");
-          // console.log(toggleTarget);
-          // iconButton.icon = target.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
-          // target.toggle();
 
           this.$.toggle.icon = this.$.collapse.opened ? 'hardware:keyboard-arrow-down' : 'hardware:keyboard-arrow-up';
           this.$.collapse.toggle();
