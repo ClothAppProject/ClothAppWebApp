@@ -252,11 +252,22 @@
             </section>
 
             <section data-route="popular-shops" tabindex="-1">
-              <paper-material elevation="1">
-                <p>Popular Shops section.</p>
-              </paper-material>
 
-              <popular-shops-gallery></popular-shops-gallery>
+              <popular-shops-gallery id="popularShopsGallery"></popular-shops-gallery>
+
+              <div class="layout horizontal center-justified" style="margin:30px">
+
+                <paper-button
+                  raised
+                  class="redButton"
+                  onclick="document.querySelector('#popularShopsGallery').loadMoreImages();"
+                  style="padding-left: 30px; padding-right: 30px;">
+
+                  <iron-icon icon="refresh"></iron-icon>
+                  LOAD MORE...
+                </paper-button>
+
+              </div>
             </section>
 
           </iron-pages>
