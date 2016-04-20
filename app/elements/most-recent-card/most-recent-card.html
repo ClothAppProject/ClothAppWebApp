@@ -93,68 +93,64 @@
   </template>
 
   <script>
-    // (function() {
-    //   'use strict';
+    var MostRecentCard = Polymer({
+      is: 'most-recent-card',
 
-      var MostRecentCard = Polymer({
-        is: 'most-recent-card',
+      properties: {
 
-        properties: {
-
-          imageUrl: {
-            type: String,
-            value: 'http://www.placehold.it/200x200'
-          },
-
-          username: {
-            type: String,
-            value: 'Username'
-          },
-
-          clothes: {
-            type: Array,
-            value: null
-          },
-
-          likeCount: {
-            type: Number,
-            value: 0
-          },
-
-          userIcon: {
-            type: String,
-            value: "social:person"
-          }
+        imageUrl: {
+          type: String,
+          value: 'http://www.placehold.it/200x200'
         },
 
-        ready: function() {
-          // var width = 150 + Math.round(Math.random() * 150);
-          // var height = 150 + Math.round(Math.random() * 150);
-
-          // var width = 300;
-          // var height = 400;
-          //
-          // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
-          // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+        username: {
+          type: String,
+          value: 'Username'
         },
 
-        factoryImpl: function(url, username, clothes, likeCount, flag) {
-          // var width = 300;
-          // var height = 400;
+        clothes: {
+          type: Array,
+          value: null
+        },
 
-          this.imageUrl = url;
-          // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
-          // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+        likeCount: {
+          type: Number,
+          value: 0
+        },
 
-          this.username = username;
-          this.clothes = clothes;
-          this.likeCount = likeCount;
-
-          if (flag === "Negozio") {
-            this.userIcon = "store";
-          }
+        userIcon: {
+          type: String,
+          value: "social:person"
         }
-      });
-    // })();
+      },
+
+      ready: function() {
+        // var width = 150 + Math.round(Math.random() * 150);
+        // var height = 150 + Math.round(Math.random() * 150);
+
+        // var width = 300;
+        // var height = 400;
+        //
+        // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
+        // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+      },
+
+      factoryImpl: function(url, username, clothes, likeCount, flag) {
+        // var width = 300;
+        // var height = 400;
+
+        this.imageUrl = url;
+        // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
+        // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+
+        this.username = username;
+        this.clothes = clothes;
+        this.likeCount = likeCount;
+
+        if (flag === "Negozio") {
+          this.userIcon = "store";
+        }
+      }
+    });
   </script>
 </dom-module>
