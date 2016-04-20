@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -132,7 +133,7 @@
               <iron-image src="http://www.placehold.it/48x48"></iron-image>
             </div>
 
-            <iron-icon icon="social:person" class="self-center"></iron-icon>
+            <iron-icon icon="{{userIcon}}" class="self-center"></iron-icon>
 
             <div class="layout vertical" style="min-width: 200px;">
               <p>Uploaded by</p>
@@ -141,13 +142,13 @@
 
           </div>
 
-          <div class="item-name">Item name 1 and Item name 2</div>
+          <div id="itemNameContainer" class="item-name" style="max-width:300px;"></div>
 
           <br>
 
-          <div class="layout horizontal wrap" style="max-width:300px; margin-left:16px;">
+          <div id="hashtagContainer" class="layout horizontal wrap" style="max-width:300px; margin-left:16px;">
 
-            <div class="hashtag">
+            <!-- <div class="hashtag">
               #Hashtag1
             </div>
 
@@ -161,7 +162,7 @@
 
             <div class="hashtag">
               #LooooooooooooooooooooooooooongHashtag
-            </div>
+            </div> -->
 
           </div>
 
@@ -178,12 +179,12 @@
 
           <div class="card-actions layout horizontal">
 
-            <paper-icon-button icon="social:person"></paper-icon-button>
+            <paper-icon-button icon="{{userIcon}}"></paper-icon-button>
             <paper-icon-button icon="social:share"></paper-icon-button>
 
             <span class="flex"></span>
 
-            <p class="favorite self-center" style="margin:0px;">123</p>
+            <p class="favorite self-center" style="margin:0px;">{{likeCount}}</p>
             <paper-icon-button icon="favorite"></paper-icon-button>
           </div>
 
@@ -194,10 +195,7 @@
   </template>
 
   <script>
-    (function() {
-      'use strict';
-
-      Polymer({
+      var TopRatedCard = Polymer({
         is: 'top-rated-card',
 
         properties: {
@@ -209,18 +207,104 @@
 
           username: {
             type: String,
-            value: 'Username',
+            value: "Username",
             notify: true
-          }
+          },
+
+          clothes: {
+            type: Array,
+            value: null
+          },
+
+          hashtags: {
+            type: Array,
+            value: null
+          },
+
+          likeCount: {
+            type: Number,
+            value: 0
+          },
+
+          userIcon: {
+            type: String,
+            value: "social:person"
+          },
         },
 
         ready: function() {
-          var width = 150 + Math.round(Math.random() * 200);
-          var height = 200 + Math.round(Math.random() * 100);
-          this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
+          // var width = 150 + Math.round(Math.random() * 200);
+          // var height = 200 + Math.round(Math.random() * 100);
+          // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
         },
+
+        factoryImpl: function(url, username, clothes, hashtags, likeCount, flag) {
+          this.imageUrl = url;
+          this.username = username;
+          this.clothes = clothes;
+          this.hashtags = hashtags;
+          this.likeCount = likeCount;
+
+          if (flag === "Negozio") {
+            this.userIcon = "store";
+          }
+
+          var itemNameContainer = this.$.itemNameContainer;
+          for (var i = 0; i < this.clothes.length; i++) {
+            var paperButton = document.createElement("paper-button");
+            paperButton.raised = true;
+            paperButton.style.margin = "4px";
+            paperButton.style.backgroundColor = "#c62828";
+            paperButton.style.color = "white";
+            paperButton.style.fontSize = "18px";
+            paperButton.style.paddingTop = paperButton.style.paddingBottom = "4px";
+            paperButton.innerHTML = this.clothes[i];
+
+            itemNameContainer.appendChild(paperButton);
+          }
+
+          var hashtagContainer = this.$.hashtagContainer;
+          // console.log(hashtagContainer);
+          if (this.hashtags != null) {
+            for (var i = 0; i < this.hashtags.length; i++) {
+              var hashtag = document.createElement("div");
+              hashtag.className += " hashtag";
+              hashtag.style.display = "inline-block";
+              hashtag.style.backgroundColor = "#c62828";
+              hashtag.style.color = "white";
+              hashtag.style.borderRadius = "20px";
+              hashtag.style.paddingTop = "4px";
+              hashtag.style.paddingBottom = "4px";
+              hashtag.style.paddingLeft = "8px";
+              hashtag.style.paddingRight = "8px";
+              hashtag.style.marginLeft = "0px";
+              hashtag.style.marginRight = "8px";
+              hashtag.style.marginTop = "0px";
+              hashtag.style.marginBottom = "8px";
+              hashtag.style.maxWidth = "260px";
+
+              // .hashtag {
+              //   display: inline-block;
+              //   background-color: var(--paper-red-800);
+              //   color: white;
+              //   border-radius: 20px;
+              //   padding-top: 4px;
+              //   padding-bottom: 4px;
+              //   padding-left: 8px;
+              //   padding-right: 8px;
+              //   margin-left: 0px;
+              //   margin-right: 8px;
+              //   margin-top: 0px;
+              //   margin-bottom: 8px;
+              //   max-width: 260px;
+              // }
+              hashtag.innerHTML = this.hashtags[i];
+
+              hashtagContainer.appendChild(hashtag);
+            }
+          }
+        },
       });
-    })();
   </script>
 </dom-module>

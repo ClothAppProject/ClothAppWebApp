@@ -7,7 +7,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/iron-scroll-threshold/iron-scroll-threshold.html">
 
-<link rel="import" href="../most-recent-card/top-rated-card.html">
+<link rel="import" href="../top-rated-card/top-rated-card.html">
 
 <dom-module id="top-rated-gallery">
   <template>
@@ -32,6 +32,15 @@
       Polymer({
         is: 'top-rated-gallery',
 
+        properties: {
+
+          size: {
+            type: Number,
+            value: 0
+          }
+
+        },
+
         ready: function() {
 
           this.loadMoreImages();
@@ -42,9 +51,42 @@
 
           var gallery = this.$.gallery;
 
-          for ( var i = 0; i < 10; i++ ) {
-            var card = document.createElement("top-rated-card");
-            gallery.appendChild(card);
+          try {
+
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState === 4 && xhttp.status === 200) {
+
+                try {
+
+                  var response = JSON.parse(xhttp.responseText);
+
+                  // alert(gallery[0].thumbnail.url);
+                  // alert(gallery[0].hashtag);
+
+                  for (var i = 0; i < response.length && i < 30; i++) {
+
+                    var photo = response[i];
+
+                    var card = new TopRatedCard(photo.thumbnail.url, photo.user, photo.tipo, photo.hashtag, photo.nLike, photo.flag);
+                    gallery.appendChild(card);
+
+                  }
+
+                } catch (e) {
+                  alert(e.message);
+                }
+              }
+            };
+
+            xhttp.open("GET", "http://clothapp.parseapp.com/topratedgallery/" + (1 + this.size) + "/" + (this.size + 16), true);
+            xhttp.send();
+
+            this.size += 30;
+
+          } catch (e) {
+            alert(e.message);
           }
         }
       });
