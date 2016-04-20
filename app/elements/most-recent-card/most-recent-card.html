@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -28,8 +29,11 @@
       }
 
       paper-card h3 {
-      	@apply(--paper-font-body3);
-      	margin: 8px;
+        @apply(--paper-font-common-base);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        margin: 8px;
       }
 
       paper-card .favorite paper-icon-button {
@@ -38,7 +42,7 @@
         margin-top: 10px;
         margin-bottom: 10px;
         padding: 0px;
-        color: grey;
+        color: var(--paper-grey-400);
       }
 
       paper-card .favorite p {
@@ -48,7 +52,7 @@
         padding-left: 5px;
         padding-right: 5px;
         border-radius: 12px;
-        background: grey;
+        background: var(--paper-red-800);
         color: white;
         text-align: center;
       }
@@ -61,6 +65,11 @@
         min-width: 280px;
       }
 
+      .user-icon {
+        margin-left: 12px;
+        color: var(--paper-red-800);
+      }
+
     </style>
 
     <paper-card id="card" elevation="1">
@@ -69,14 +78,14 @@
         <iron-image id="mainImage" src="{{imageUrl}}" sizing="cover"></iron-image>
 
         <div class="layout horizontal">
-          <div class="flex layout vertical">
-            <p>Uploaded by</p>
-            <h3>{{username}}</h3>
+          <div class="flex self-center layout horizontal">
+            <iron-icon icon="social:person" class="flex-2 self-center user-icon"></iron-icon>
+            <h3 class="flex self-center">{{username}}</h3>
           </div>
 
           <div class="flex-2 self-center end-justified layout horizontal favorite">
             <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
-            <p class="flex self-center end-justified">123</p>
+            <p class="flex self-center end-justified">{{likeCount}}</p>
           </div>
         </div>
       </div>
