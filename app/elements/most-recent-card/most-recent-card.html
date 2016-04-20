@@ -54,6 +54,9 @@
       iron-image {
         width: 100%;
         --iron-image-width: 100%;
+        height: 300px;
+        --iron-image-height: 300px;
+        min-width: 280px;
       }
 
     </style>
@@ -61,7 +64,7 @@
     <paper-card id="card" elevation="1">
       <div class="layout vertical">
 
-        <iron-image id="mainImage" src="{{imageUrl}}"></iron-image>
+        <iron-image id="mainImage" src="{{imageUrl}}" sizing="cover"></iron-image>
 
         <div class="layout horizontal">
           <div class="flex layout vertical">
@@ -79,10 +82,10 @@
   </template>
 
   <script>
-    (function() {
-      'use strict';
+    // (function() {
+    //   'use strict';
 
-      Polymer({
+      var MostRecentCard = Polymer({
         is: 'most-recent-card',
 
         properties: {
@@ -103,13 +106,22 @@
           // var width = 150 + Math.round(Math.random() * 150);
           // var height = 150 + Math.round(Math.random() * 150);
 
-          var width = 300;
-          var height = 400;
-
-          this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
+          // var width = 300;
+          // var height = 400;
+          //
+          // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
         },
+
+        factoryImpl: function(url) {
+          // var width = 300;
+          // var height = 400;
+
+          this.imageUrl = url;
+          // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
+          // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+        }
       });
-    })();
+    // })();
   </script>
 </dom-module>

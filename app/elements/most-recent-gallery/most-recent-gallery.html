@@ -32,6 +32,15 @@
       Polymer({
         is: 'most-recent-gallery',
 
+        properties: {
+
+          size: {
+            type: Number,
+            value: 0
+          }
+
+        },
+
         ready: function() {
 
           this.loadMoreImages();
@@ -42,12 +51,131 @@
 
           var gallery = this.$.gallery;
 
-          for ( var i = 0; i < 30; i++ ) {
-            var card = document.createElement("most-recent-card");
-            gallery.appendChild(card);
+          try {
+
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+              if (xhttp.readyState === 4 && xhttp.status === 200) {
+
+                try {
+
+                  var response = JSON.parse(xhttp.responseText);
+
+                  // alert(gallery[0].thumbnail.url);
+                  // alert(gallery[0].hashtag);
+
+                  for (var i = 0; i < response.length && i < 30; i++) {
+
+                    var card = new MostRecentCard(response[i].thumbnail.url);
+                    gallery.appendChild(card);
+
+                  }
+
+                } catch (e) {
+                  alert(e.message);
+                }
+              }
+            };
+
+            xhttp.open("GET", "http://clothapp.parseapp.com/recentgallery/" + (1 + this.size) + "/" + (this.size + 30), true);
+            xhttp.send();
+
+            this.size += 30;
+
+          } catch (e) {
+            alert(e.message);
           }
+
+          // for ( var i = 0; i < 30; i++ ) {
+          //   // var card = document.createElement("most-recent-card");
+          //   var card = new MostRecentCard();
+          //   gallery.appendChild(card);
+          // }
         }
       });
     })();
+
+    /*
+    try {
+
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+
+          try {
+
+            var gallery = JSON.parse(xhttp.responseText);
+
+            // alert(gallery[0].thumbnail.url);
+            // alert(gallery[0].hashtag);
+
+            var div = document.getElementById("gallery");
+
+            var content = "";
+
+            for (var i = 0; i < gallery.length && i < 32; i += 4) {
+
+              content += '<div class="row">';
+
+              content += createCard(i, gallery[i].thumbnail.url, gallery[i].user, gallery[i].tipo, gallery[i].hashtag);
+
+              if (i + 1 < gallery.length) {
+                content += createCard(i + 1, gallery[i + 1].thumbnail.url, gallery[i + 1].user, gallery[i + 1].tipo, gallery[i + 1].hashtag);
+              }
+
+              if (i + 2 < gallery.length) {
+                content += createCard(i + 2, gallery[i + 2].thumbnail.url, gallery[i + 2].user, gallery[i + 2].tipo, gallery[i + 2].hashtag);
+              }
+
+              if (i + 3 < gallery.length) {
+                content += createCard(i + 3, gallery[i + 3].thumbnail.url, gallery[i + 3].user, gallery[i + 3].tipo, gallery[i + 3].hashtag);
+              }
+
+              content += '</div>';
+            }
+
+            // alert(content);
+
+            $("#recentGalleryProgress").hide();
+
+            div.innerHTML = content;
+
+            var fadeImmediately = 8;
+
+            if (window.innerWidth <= 600) {
+              fadeImmediately = 1;
+            } else if (window.innerWidth <= 992) {
+              fadeImmediately = 4;
+            }
+
+            for (var i = 0; i < fadeImmediately; i++) {
+              Materialize.fadeInImage("#image" + i);
+            }
+
+            var options = [];
+
+            for (var i = fadeImmediately; i < gallery.length; i++) {
+              var id = "#image" + i;
+              options.push({selector: id, offset: 0, callback: 'Materialize.fadeInImage("' + id + '")' });
+            }
+
+            Materialize.scrollFire(options);
+
+          } catch (e) {
+            alert(e.message);
+          }
+        }
+      };
+
+      xhttp.open("GET", "http://clothapp.parseapp.com/recentgallery/" + start + "/" + end, true);
+      xhttp.send();
+
+    } catch (e) {
+      alert(e.message);
+    }
+
+    */
   </script>
 </dom-module>
