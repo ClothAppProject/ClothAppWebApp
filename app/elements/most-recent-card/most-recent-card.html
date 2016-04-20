@@ -79,7 +79,7 @@
 
         <div class="layout horizontal">
           <div class="flex self-center layout horizontal">
-            <iron-icon icon="social:person" class="flex-2 self-center user-icon"></iron-icon>
+            <iron-icon icon="{{userIcon}}" class="flex-2 self-center user-icon"></iron-icon>
             <h3 class="flex self-center">{{username}}</h3>
           </div>
 
@@ -119,6 +119,11 @@
           likeCount: {
             type: Number,
             value: 0
+          },
+
+          userIcon: {
+            type: String,
+            value: "social:person"
           }
         },
 
@@ -133,7 +138,7 @@
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
         },
 
-        factoryImpl: function(url, username, clothes, likeCount) {
+        factoryImpl: function(url, username, clothes, likeCount, flag) {
           // var width = 300;
           // var height = 400;
 
@@ -144,6 +149,10 @@
           this.username = username;
           this.clothes = clothes;
           this.likeCount = likeCount;
+
+          if (flag === "Negozio") {
+            this.userIcon = "store";
+          }
         }
       });
     // })();
