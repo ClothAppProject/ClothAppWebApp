@@ -33,10 +33,11 @@
       }
 
       paper-card .favorite paper-icon-button {
-        margin-left: 10px;
-        margin-right: 0px;
+        margin-left: 0px;
+        margin-right: 4px;
         margin-top: 10px;
         margin-bottom: 10px;
+        padding: 0px;
         color: grey;
       }
 
@@ -49,6 +50,7 @@
         border-radius: 12px;
         background: grey;
         color: white;
+        text-align: center;
       }
 
       iron-image {
@@ -72,7 +74,7 @@
             <h3>{{username}}</h3>
           </div>
 
-          <div class="flex-3 self-center end-justified layout horizontal favorite">
+          <div class="flex-2 self-center end-justified layout horizontal favorite">
             <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
             <p class="flex self-center end-justified">123</p>
           </div>
@@ -97,8 +99,17 @@
 
           username: {
             type: String,
-            value: 'Username',
-            notify: true
+            value: 'Username'
+          },
+
+          clothes: {
+            type: Array,
+            value: null
+          },
+
+          likeCount: {
+            type: Number,
+            value: 0
           }
         },
 
@@ -113,13 +124,17 @@
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
         },
 
-        factoryImpl: function(url) {
+        factoryImpl: function(url, username, clothes, likeCount) {
           // var width = 300;
           // var height = 400;
 
           this.imageUrl = url;
           // this.imageUrl = "http://www.placehold.it/" + width + "x" + height;
           // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
+
+          this.username = username;
+          this.clothes = clothes;
+          this.likeCount = likeCount;
         }
       });
     // })();
