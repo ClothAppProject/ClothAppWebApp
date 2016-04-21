@@ -121,8 +121,9 @@
           <span class="menu-name">Menu</span>
         </paper-toolbar>
 
-        <!-- Drawer Content -->
-        <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
+        <home-side-menu></home-side-menu>
+
+        <!-- <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
 
           <iron-image style="width:100%; --iron-image-width:100%; height:250px; background-color:lightgray;"
             sizing="cover" preload fade src="http://lorempixel.com/250/200"></iron-image>
@@ -170,7 +171,7 @@
             <iron-icon icon="feedback"></iron-icon>
             <span>Feedback</span>
           </a>
-        </paper-menu>
+        </paper-menu> -->
 
       </paper-scroll-header-panel>
 
@@ -199,8 +200,8 @@
           </div> -->
 
           <paper-tabs attr-for-selected="data-route" selected="[[route]]" class="bottom self-end" style="width:100%; margin-left:0px; margin-right:0px" scrollable>
-            <paper-tab data-route="home">
-              <a href="{{baseUrl}}" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
+            <paper-tab data-route="most-recent-photos" selected>
+              <a href="{{baseUrl}}most-recent-photos" class="link" style="text-decoration:none; color:white;">MOST RECENT</a>
             </paper-tab>
             <paper-tab data-route="top-rated-photos" link>
               <a href="{{baseUrl}}top-rated-photos" class="link" style="text-decoration:none; color:white;">TOP RATED</a>
@@ -216,7 +217,7 @@
         <div class="content">
 
           <iron-pages attr-for-selected="data-route" selected="[[route]]">
-            <section data-route="home" tabindex="-1">
+            <section data-route="most-recent-photos" tabindex="-1">
 
               <most-recent-gallery id="mostRecentGallery"></most-recent-gallery>
 
