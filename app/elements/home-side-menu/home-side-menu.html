@@ -182,7 +182,7 @@
         <h3 style="margin-bottom:0px;">About You</h3>
         <paper-input id="signinFirstName" label="First Name" name="firstName" required></paper-input>
         <paper-input id="signinLastName" label="Last Name" name="lastName" required></paper-input>
-        <paper-radio-group selected="female" style="margin-top:10px; margin-bottom:0px;">
+        <paper-radio-group id="signinGender" selected="female" style="margin-top:10px; margin-bottom:0px;">
           <paper-radio-button name="female">Female</paper-radio-button>
           <paper-radio-button name="male">Male</paper-radio-button>
         </paper-radio-group>
@@ -192,7 +192,7 @@
 
       <div class="buttons">
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button dialog-confirm onclick="submitLoginDialog();">Sign in</paper-button>
+        <paper-button dialog-confirm onclick="submitSigninDialog();">Sign in</paper-button>
       </div>
 
     </paper-dialog>
@@ -285,6 +285,85 @@
         document.getElementById("loginLink").style.display = "block";
         document.getElementById("signinLink").style.display = "block";
       });
+    }
+
+    function submitSigninDialog(event) {
+
+      try {
+        var username = document.getElementById("signinUsername").value;
+        var password = document.getElementById("signinPassword").value;
+        var repeatPassword = document.getElementById("signinPasswordRepeat").value;
+        var email = document.getElementById("signinEmail").value;
+
+        var firstName = document.getElementById("signinFirstName").value;
+        var lastName = document.getElementById("signinLastName").value;
+        var gender = document.getElementById("signinGender").value;
+        var birthday = document.getElementById("signinBirthday").value;
+
+        var infoDialogMessage = document.getElementById("infoDialogMessage");
+        var infoDialog = document.getElementById("infoDialog");
+
+        if (username == null || username == "") {
+          infoDialogMessage.innerHTML = "Please insert a username.";
+          infoDialog.open();
+          return;
+        } else if (password == null || password == "") {
+          infoDialogMessage.innerHTML = "Please insert a password.";
+          infoDialog.open();
+          return;
+        } else if (repeatPassword == null || repeatPassword == "") {
+          infoDialogMessage.innerHTML = "Please repeat the password.";
+          infoDialog.open();
+          return;
+        } else if (email == null || email == "") {
+          infoDialogMessage.innerHTML = "Please insert an email address.";
+          infoDialog.open();
+          return;
+        } else if (firstName == null || firstName == "") {
+          infoDialogMessage.innerHTML = "Please insert your first name.";
+          infoDialog.open();
+          return;
+        } else if (lastName == null || lastName == "") {
+          infoDialogMessage.innerHTML = "Please insert your last name.";
+          infoDialog.open();
+          return;
+        } else if (birthday == null || birthday == "") {
+          infoDialogMessage.innerHTML = "Please insert your birthday.";
+          infoDialog.open();
+          return;
+        }
+
+        if (username.length < 6 || username.length > 15) {
+          infoDialogMessage.innerHTML = "Usernames should be between 6 and 15 characters long.";
+          infoDialog.open();
+          return;
+        }
+
+        var illegalChars = /\W/;
+
+        if (illegalChars.test(username)) {
+          infoDialogMessage.innerHTML = "Usernames should contain only letters, numbers and/or underscores.";
+          infoDialog.open();
+          return;
+        }
+
+        if (password != repeatPassword) {
+          infoDialogMessage.innerHTML = "Password field doesn't match Repeat Password field.";
+          infoDialog.open();
+          return;
+        }
+
+        var emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailPattern.test(email)) {
+          infoDialogMessage.innerHTML = "Please insert a valid email address.";
+          infoDialog.open();
+          return;
+        }
+
+      } catch (error) {
+        alert(error.message);
+      }
+
     }
   </script>
 </dom-module>
