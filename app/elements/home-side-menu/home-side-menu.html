@@ -119,18 +119,32 @@
       </a>
     </paper-menu>
 
+    <paper-dialog id="infoDialog" modal>
+
+      <h2 style="margin-left:0px; padding-left:0px;">ClothApp</h2>
+
+      <paper-dialog-scrollable>
+        <p id="infoDialogMessage"></p>
+      </paper-dialog-scrollable>
+
+      <div class="buttons">
+        <paper-button dialog-confirm>OK</paper-button>
+      </div>
+
+    </paper-dialog>
+
     <paper-dialog id="loginDialog" modal>
 
       <h2 style="margin-left:0px; padding-left:0px;">Login</h2>
 
       <paper-dialog-scrollable>
-        <paper-input label="Username" name="username" focused required></paper-input>
-        <paper-input label="Password" name="password" type="password" required></paper-input>
+        <paper-input id="loginUsername" label="Username" name="username" focused required></paper-input>
+        <paper-input id="loginPassword" label="Password" name="password" type="password" required></paper-input>
       </paper-dialog-scrollable>
 
       <div class="buttons">
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button dialog-confirm>Login</paper-button>
+        <paper-button dialog-confirm onclick="submitLoginDialog();">Login</paper-button>
       </div>
 
     </paper-dialog>
@@ -172,9 +186,35 @@
     })();
 
     function openLoginDialog(event) {
-      // alert("Click!");
-
       document.getElementById("loginDialog").open();
+    }
+
+    function submitLoginDialog(event) {
+
+      var username = document.getElementById("loginUsername").value;
+      var password = document.getElementById("loginPassword").value;
+
+      // console.log("Logging in with username " + username + " and password " + password);
+
+      Parse.User.logIn(username, password, {
+        success: function(user) {
+          console.log("Login Success!");
+
+          document.getElementById("infoDialogMessage").innerHTML = "Login completed! Welcome back " + username + "!";
+          document.getElementById("infoDialog").open();
+
+          document.getElementById("profileLink").style.display = "block";
+          document.getElementById("logoutLink").style.display = "block";
+          document.getElementById("loginLink").style.display = "none";
+          document.getElementById("signinLink").style.display = "none";
+        },
+        error: function(user, error) {
+          console.log("Login Failed... Error: " + error.message);
+
+          document.getElementById("infoDialogMessage").innerHTML = "Login failed: " + error.message;
+          document.getElementById("infoDialog").open();
+        }
+      });
     }
   </script>
 </dom-module>
