@@ -77,14 +77,24 @@
 
       <hr>
 
-      <a data-route="profile" href="{{baseUrl}}profile">
+      <a id="profileLink" data-route="profile" href="{{baseUrl}}profile">
         <iron-icon icon="social:person"></iron-icon>
         <span>My Profile</span>
       </a>
 
-      <a data-route="logout" href="{{baseUrl}}logout">
+      <a id="logoutLink" data-route="logout" href="{{baseUrl}}logout">
         <iron-icon icon="exit-to-app"></iron-icon>
         <span>Logout</span>
+      </a>
+
+      <a id="loginLink" data-route="logout" href="{{baseUrl}}login">
+        <iron-icon icon="exit-to-app"></iron-icon>
+        <span>Login</span>
+      </a>
+
+      <a id="signinLink" data-route="logout" href="{{baseUrl}}signin">
+        <iron-icon icon="social:person-add"></iron-icon>
+        <span>Sign in</span>
       </a>
 
       <hr>
@@ -124,7 +134,14 @@
         },
 
         ready: function() {
-
+          var currentUser = Parse.User.current();
+          if (currentUser) {
+            this.$.loginLink.style.display = "none";
+            this.$.signinLink.style.display = "none";
+          } else {
+            this.$.profileLink.style.display = "none";
+            this.$.logoutLink.style.display = "none";
+          }
         },
       });
     })();
