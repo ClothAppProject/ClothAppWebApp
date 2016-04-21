@@ -2,6 +2,8 @@
 
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
@@ -48,6 +50,13 @@
         padding: 0 16px;
       }
 
+      paper-dialog {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
     </style>
 
     <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
@@ -77,22 +86,22 @@
 
       <hr>
 
-      <a id="profileLink" data-route="profile" href="{{baseUrl}}profile">
+      <a id="profileLink">
         <iron-icon icon="social:person"></iron-icon>
         <span>My Profile</span>
       </a>
 
-      <a id="logoutLink" data-route="logout" href="{{baseUrl}}logout">
+      <a id="logoutLink">
         <iron-icon icon="exit-to-app"></iron-icon>
         <span>Logout</span>
       </a>
 
-      <a id="loginLink" data-route="logout" href="{{baseUrl}}login">
+      <a id="loginLink" onclick="openLoginDialog();">
         <iron-icon icon="exit-to-app"></iron-icon>
         <span>Login</span>
       </a>
 
-      <a id="signinLink" data-route="logout" href="{{baseUrl}}signin">
+      <a id="signinLink">
         <iron-icon icon="social:person-add"></iron-icon>
         <span>Sign in</span>
       </a>
@@ -109,6 +118,22 @@
         <span>Feedback</span>
       </a>
     </paper-menu>
+
+    <paper-dialog id="loginDialog" modal>
+
+      <h2 style="margin-left:0px; padding-left:0px;">Login</h2>
+
+      <paper-dialog-scrollable>
+        <paper-input label="Username" name="username" focused required></paper-input>
+        <paper-input label="Password" name="password" type="password" required></paper-input>
+      </paper-dialog-scrollable>
+
+      <div class="buttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button dialog-confirm>Login</paper-button>
+      </div>
+
+    </paper-dialog>
 
   </template>
 
@@ -145,5 +170,11 @@
         },
       });
     })();
+
+    function openLoginDialog(event) {
+      // alert("Click!");
+
+      document.getElementById("loginDialog").open();
+    }
   </script>
 </dom-module>
