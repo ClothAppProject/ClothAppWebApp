@@ -77,12 +77,17 @@
         min-height: 400px;
       }
 
-      .item-name {
+      .item-name-container {
         margin-left: 16px;
         margin-right: 16px;
         margin-top: 24px;
         margin-bottom: 16px;
         @apply(--paper-font-headline);
+      }
+
+      .hashtag-container {
+          margin-left: 16px;
+          margin-right: 16px;
       }
 
       .hashtag {
@@ -125,7 +130,7 @@
 
         <iron-image src="{{imageUrl}}" class="main-image flex" sizing="cover"></iron-image>
 
-        <div class="content">
+        <div class="content flex" style="min-width:300px;">
 
           <div class="layout horizontal chip">
 
@@ -142,11 +147,11 @@
 
           </div>
 
-          <div id="itemNameContainer" class="item-name" style="max-width:300px;"></div>
+          <div id="itemNameContainer" class="item-name-container"></div>
 
           <br>
 
-          <div id="hashtagContainer" class="layout horizontal wrap" style="max-width:300px; margin-left:16px;">
+          <div id="hashtagContainer" class="hashtag-container layout horizontal wrap">
 
             <!-- <div class="hashtag">
               #Hashtag1
