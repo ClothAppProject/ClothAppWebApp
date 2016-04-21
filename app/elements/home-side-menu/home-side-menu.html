@@ -10,6 +10,8 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="../../bower_components/vaadin-date-picker/vaadin-date-picker.html">
+
 <dom-module id="home-side-menu">
   <template>
     <style include="shared-styles iron-flex iron-flex-alignment">
@@ -186,7 +188,8 @@
           <paper-radio-button name="female">Female</paper-radio-button>
           <paper-radio-button name="male">Male</paper-radio-button>
         </paper-radio-group>
-        <paper-input id="signinBirthday" label="Birthday (dd/mm/yyyy)" name="birthday" required></paper-input>
+        <!-- <paper-input id="signinBirthday" label="Birthday (dd/mm/yyyy)" name="birthday" required></paper-input> -->
+        <vaadin-date-picker label="Birthday" value="1990-01-01"></vaadin-date-picker>
 
       </paper-dialog-scrollable>
 
@@ -359,6 +362,8 @@
           infoDialog.open();
           return;
         }
+
+        
 
       } catch (error) {
         alert(error.message);
