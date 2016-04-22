@@ -84,7 +84,7 @@
           </div>
 
           <div class="flex-2 self-center end-justified layout horizontal favorite">
-            <paper-icon-button icon="favorite" class="flex self-center end-justified"></paper-icon-button>
+            <paper-icon-button id="likeIcon" icon="favorite" class="flex self-center end-justified"></paper-icon-button>
             <p class="flex self-center end-justified">{{likeCount}}</p>
           </div>
         </div>
@@ -118,9 +118,19 @@
           value: 0
         },
 
+        likeUsers: {
+          type: Array,
+          value: null
+        },
+
         userIcon: {
           type: String,
           value: "social:person"
+        },
+
+        objectId: {
+          type: String,
+          value: ""
         }
       },
 
@@ -135,7 +145,10 @@
         // this.imageUrl = "http://www.lorempixel.com/" + width + "/200";
       },
 
-      factoryImpl: function(url, username, clothes, likeCount, flag) {
+      factoryImpl: function(id, url, username, clothes, likeCount, likeUsers, flag) {
+
+        this.objectId = id;
+
         // var width = 300;
         // var height = 400;
 
@@ -146,9 +159,58 @@
         this.username = username;
         this.clothes = clothes;
         this.likeCount = likeCount;
+        this.likeUsers = likeUsers;
 
         if (flag === "Negozio") {
           this.userIcon = "store";
+        }
+
+        // This is not efficient... The array should be checked in most-recent-gallery
+        // once and not every time in every most-recent-card. Too lazy now...
+        var user = Parse.User.current();
+        if (user) {
+          if (this.likeUsers != null && this.likeUsers.indexOf(user.get("username")) != -1) {
+            console("Liked");
+            this.$.likeIcon.style.color = "red";
+          }
+        }
+
+        var objectId = this.objectId;
+
+        this.$.likeIcon.onclick = function(event) {
+
+          var user = Parse.User.current();
+          if (user) {
+            console.log("Clicked on like");
+
+            var Photo = Parse.Object.extend("Photo");
+
+            var query = new Parse.Query(Photo);
+            console.log(objectId);
+            // query.equalTo("objectId", this.objectId);
+
+            query.get(objectId, {
+              success: function(photo) {
+                console.log("Successfully retrieved photo!");
+
+                photo.add("like", user.get("username"));
+                photo.save();
+              },
+
+              error: function(object, error) {
+                console.log("Error: " + error.code + " " + error.message);
+              }
+            });
+
+          } else {
+            console.log("Not logged in.");
+
+            var infoDialogMessage = document.getElementById("infoDialogMessage");
+            var infoDialog = document.getElementById("infoDialog");
+
+            infoDialogMessage.innerHTML = "You need to be logged in.";
+            infoDialog.open();
+          }
         }
       }
     });

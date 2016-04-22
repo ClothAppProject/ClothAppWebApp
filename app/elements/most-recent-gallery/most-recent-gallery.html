@@ -69,7 +69,7 @@
 
                     var photo = response[i];
 
-                    var card = new MostRecentCard(photo.thumbnail.url, photo.user, photo.tipo, photo.nLike, photo.flag);
+                    var card = new MostRecentCard(photo.objectId, photo.thumbnail.url, photo.user, photo.tipo, photo.nLike, photo.like, photo.flag);
                     gallery.appendChild(card);
 
                   }
