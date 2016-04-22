@@ -170,31 +170,52 @@
         var user = Parse.User.current();
         if (user) {
           if (this.likeUsers != null && this.likeUsers.indexOf(user.get("username")) != -1) {
-            console("Liked");
-            this.$.likeIcon.style.color = "red";
+            // console("Liked");
+
+            this.$.likeIcon.style.color = "#c62828";
           }
         }
 
         var objectId = this.objectId;
+        var likeIcon = this.$.likeIcon;
+        var info = this;
 
         this.$.likeIcon.onclick = function(event) {
 
           var user = Parse.User.current();
           if (user) {
-            console.log("Clicked on like");
+            // console.log("Clicked on like");
 
             var Photo = Parse.Object.extend("Photo");
 
             var query = new Parse.Query(Photo);
-            console.log(objectId);
-            // query.equalTo("objectId", this.objectId);
+            // console.log(objectId);
 
             query.get(objectId, {
               success: function(photo) {
-                console.log("Successfully retrieved photo!");
+                // console.log("Successfully retrieved photo!");
 
-                photo.add("like", user.get("username"));
-                photo.save();
+                if (info.likeUsers != null && info.likeUsers.indexOf(user.get("username")) != -1) {
+                  photo.remove("like", user.get("username"));
+                  photo.set("nLike", photo.get("nLike") - 1);
+
+                  var index = info.likeUsers.indexOf(user.get("username"));
+                  info.likeUsers.splice(index, 1);
+
+                  likeIcon.style.color = "#bdbdbd";
+
+                  photo.save();
+
+                } else {
+                  photo.add("like", user.get("username"));
+                  photo.set("nLike", photo.get("nLike") + 1);
+
+                  info.likeUsers.push(user.get("username"));
+
+                  likeIcon.style.color = "#c62828";
+
+                  photo.save();
+                }
               },
 
               error: function(object, error) {
