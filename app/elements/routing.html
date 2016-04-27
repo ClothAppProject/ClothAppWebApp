@@ -75,7 +75,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     page('/popular-shops', function() {
       app.route = 'popular-shops';
       setFocus(app.route);
-    })
+    });
+
+    page('/gallery/:id', function() {
+      app.route = 'gallery';
+      setFocus(app.route);
+    }); 
 
     // 404
     page('*', function() {
