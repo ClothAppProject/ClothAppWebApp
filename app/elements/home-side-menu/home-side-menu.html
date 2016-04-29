@@ -203,10 +203,10 @@
   </template>
 
   <script>
-    (function() {
-      'use strict';
+    // (function() {
+    //   'use strict';
 
-      Polymer({
+      var HomeSideMenu = Polymer({
         is: 'home-side-menu',
 
         properties: {
@@ -234,7 +234,7 @@
           }
         },
       });
-    })();
+    // })();
 
     function openLoginDialog(event) {
       document.getElementById("loginDialog").open();
@@ -277,7 +277,7 @@
     }
 
     function submitLogoutDialog(event) {
-      Parse.User.logOut().then(() => {
+      Parse.User.logOut().then( function() {
         console.log("Logout completed.");
 
         document.getElementById("infoDialogMessage").innerHTML = "Logout completed!";
