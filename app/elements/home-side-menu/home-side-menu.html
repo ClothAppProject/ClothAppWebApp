@@ -203,10 +203,10 @@
   </template>
 
   <script>
-    // (function() {
-    //   'use strict';
+    (function() {
+      'use strict';
 
-      var HomeSideMenu = Polymer({
+      Polymer({
         is: 'home-side-menu',
 
         properties: {
@@ -234,7 +234,7 @@
           }
         },
       });
-    // })();
+    })();
 
     function openLoginDialog(event) {
       document.getElementById("loginDialog").open();
