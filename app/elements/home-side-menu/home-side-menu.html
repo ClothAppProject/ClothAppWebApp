@@ -289,6 +289,7 @@
       user.set("name", firstName);
 
       user.signUp(null, {
+
         success: function(user) {
           console.log("Sign in success!");
 
@@ -317,11 +318,13 @@
             }
           });
         },
+
         error: function(user, error) {
           console.log("Error: " + error.code + " " + error.message);
           infoDialogMessage.innerHTML = "This error occurred while creating your account. Error: " + error.message;
           infoDialog.open();
         }
+        
       });
 
     }
