@@ -122,7 +122,7 @@
       </a>
     </paper-menu>
 
-    <paper-dialog id="infoDialog" modal>
+    <!-- <paper-dialog id="infoDialog" modal>
 
       <h2 style="margin-left:0px; padding-left:0px;">ClothApp</h2>
 
@@ -188,7 +188,6 @@
           <paper-radio-button name="female">Female</paper-radio-button>
           <paper-radio-button name="male">Male</paper-radio-button>
         </paper-radio-group>
-        <!-- <paper-input id="signinBirthday" label="Birthday (dd/mm/yyyy)" name="birthday" required></paper-input> -->
         <vaadin-date-picker id="signinBirthday" label="Birthday" value="1990-01-01"></vaadin-date-picker>
 
       </paper-dialog-scrollable>
@@ -198,7 +197,7 @@
         <paper-button dialog-confirm onclick="submitSigninDialog();">Sign in</paper-button>
       </div>
 
-    </paper-dialog>
+    </paper-dialog> -->
 
   </template>
 
@@ -232,7 +231,22 @@
             this.$.profileLink.style.display = "none";
             this.$.logoutLink.style.display = "none";
           }
+
+          // var dialogs = this.querySelectorAll('paper-dialog');
+          // var first = this.childNodes[0];
+          // for (var i = dialogs.length - 1; i >= 0; i--) {
+          //   // console.log("Done");
+          //   this.insertBefore(dialogs[i], first);
+          // }
         },
+
+        // https://github.com/PolymerElements/paper-dialog/issues/7
+        // patchOverlay: function (e) {
+        //   if (e.target.withBackdrop) {
+        //     e.target.parentNode.insertBefore(e.target._backdrop, e.target);
+        //   }
+        // },
+
       });
     })();
 

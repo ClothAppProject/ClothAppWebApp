@@ -89,7 +89,6 @@
       font-size: 20px;
       outline: 0;
       border: none;
-      margin-left: 10px;
     }
 
     .search-box {
@@ -106,6 +105,13 @@
       padding-left: 30px;
       padding-right: 30px;
     }
+
+    paper-dialog {
+      min-width: 300px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    
   </style>
 </head>
 
@@ -138,9 +144,9 @@
 
           <!-- <span class="space"></span> -->
 
-          <div class="search-box top top-container">
+          <div class="search-box">
             <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle style="color:grey"></paper-icon-button>
-            <input>
+            <input></input>
             <iron-icon icon="search"></iron-icon>
           </div>
 
@@ -264,6 +270,84 @@
     -->
 
   </template>
+
+  <paper-dialog id="infoDialog" modal>
+
+    <h2 style="margin-left:0px; padding-left:0px;">ClothApp</h2>
+
+    <paper-dialog-scrollable>
+      <p id="infoDialogMessage"></p>
+    </paper-dialog-scrollable>
+
+    <div class="buttons">
+      <paper-button dialog-confirm>OK</paper-button>
+    </div>
+
+  </paper-dialog>
+
+  <paper-dialog id="loginDialog" modal>
+
+    <h2 style="margin-left:0px; padding-left:0px;">Login</h2>
+
+    <paper-dialog-scrollable>
+      <paper-input id="loginUsername" label="Username" name="username" focused required></paper-input>
+      <paper-input id="loginPassword" label="Password" name="password" type="password" required></paper-input>
+    </paper-dialog-scrollable>
+
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button dialog-confirm onclick="submitLoginDialog();">Login</paper-button>
+    </div>
+
+  </paper-dialog>
+
+  <paper-dialog id="logoutDialog" modal>
+
+    <h2 style="margin-left:0px; padding-left:0px;">Logout</h2>
+
+    <paper-dialog-scrollable>
+      <p>Do you really want to logout?</p>
+    </paper-dialog-scrollable>
+
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button dialog-confirm onclick="submitLogoutDialog();">Logout</paper-button>
+    </div>
+
+  </paper-dialog>
+
+  <paper-dialog id="signinDialog" modal>
+
+    <h2 style="margin-left:0px; padding-left:0px;">Sign in</h2>
+
+    <paper-dialog-scrollable>
+
+      <h3 style="margin-bottom:0px;">Account Info</h3>
+      <paper-input id="signinUsername" label="Username" name="username" focused required></paper-input>
+      <paper-input id="signinPassword" label="Password" name="password" type="password" required></paper-input>
+      <paper-input id="signinPasswordRepeat" label="Repeat Password" name="repeatPassword" type="password" required></paper-input>
+      <paper-input id="signinEmail" label="Email" name="email" required></paper-input>
+
+      <br>
+
+      <h3 style="margin-bottom:0px;">About You</h3>
+      <paper-input id="signinFirstName" label="First Name" name="firstName" required></paper-input>
+      <paper-input id="signinLastName" label="Last Name" name="lastName" required></paper-input>
+      <paper-radio-group id="signinGender" selected="female" style="margin-top:10px; margin-bottom:0px;">
+        <paper-radio-button name="female">Female</paper-radio-button>
+        <paper-radio-button name="male">Male</paper-radio-button>
+      </paper-radio-group>
+      <!-- <paper-input id="signinBirthday" label="Birthday (dd/mm/yyyy)" name="birthday" required></paper-input> -->
+      <vaadin-date-picker id="signinBirthday" label="Birthday" value="1990-01-01"></vaadin-date-picker>
+
+    </paper-dialog-scrollable>
+
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button dialog-confirm onclick="submitSigninDialog();">Sign in</paper-button>
+    </div>
+
+  </paper-dialog>
 
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
