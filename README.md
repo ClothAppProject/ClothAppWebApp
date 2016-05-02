@@ -1,3 +1,5 @@
+<img href="http://www.clothapp.it" src="https://github.com/ClothAppProject/ClothAppAndroid/blob/master/app/src/main/res/mipmap-hdpi/logo.png" height="25%" width="25%" style="margin:0 auto; display: block;">
+
 # ClothApp WebApp
 
 This is the repository for the ClothApp Web Application. This application is in Alpha version, but it is publicly available for testing at:
